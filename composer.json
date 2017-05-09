@@ -1,12 +1,28 @@
 {
     "name": "elegon/framework",
+    "description": "Set of packages to facilitate new projects at Elegon",
+    "authors": [
+        {
+            "name": "Loris Leiva",
+            "email": "loris.leiva@gmail.com"
+        },
+        {
+            "name": "Simon Favre",
+            "email": "sim.favre73@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "orchestra/testbench": "~3.0"
+    },
     "autoload": {
         "psr-4": {
             "Elegon\\": "src/"
         }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "4.*"
     },
     "autoload-dev": {
         "psr-4": {
