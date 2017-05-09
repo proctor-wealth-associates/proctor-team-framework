@@ -2,23 +2,27 @@
 
 namespace Elegon\Foundation;
 
-use Illuminate\Support\ServiceProvider;
-use Elegon\Foundation\Commands\PublishConfigs;
+use Elegon\Foundation\Elegon;
+use Elegon\Foundation\ServiceProvider;
+use Elegon\Foundation\Console\PublishConfigs;
 
 class FoundationServiceProvider extends ServiceProvider
 {
+    protected $configs = [ 'foundation' ];
+
     public function boot()
     {
-        // Publishes the config files.
-        $this->publishes([
-            __DIR__.'/stubs/config/elegon.php' => config_path('elegon.php')
-        ], 'config');
+        // Initializes elegon static helper.
+        Elegon::useUserModel(config('auth.providers.users.model', 'App\User'));
+        Elegon::useTeamModel(config('elegon.teams.model', 'App\Team'));
 
-        // Initializes commands.
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                PublishConfigs::class,
-            ]);
-        }
+        $this->publishConfigs();
+
+        $this->commandsInConsole([ PublishConfigs::class ]);
+    }
+
+    public function register()
+    {
+        $this->mergeConfigs();
     }
 }

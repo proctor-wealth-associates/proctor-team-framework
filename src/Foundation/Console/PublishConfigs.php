@@ -1,6 +1,6 @@
 <?php
 
-namespace Elegon\Foundation\Commands;
+namespace Elegon\Foundation\Console;
 
 use Illuminate\Console\Command;
 
@@ -12,9 +12,8 @@ class PublishConfigs extends Command
 
     public function handle()
     {
-        $this->callSilent('vendor:publish', [
-            '--tag' => 'config',
-            '--provider' => 'Elegon\Foundation\FoundationServiceProvider'
+        $this->call('vendor:publish', [
+            '--tag' => 'elegon_config'
         ]);
     }
 }
