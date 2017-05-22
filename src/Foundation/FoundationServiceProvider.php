@@ -5,6 +5,7 @@ namespace Elegon\Foundation;
 use Elegon\Foundation\Elegon;
 use Elegon\Foundation\ServiceProvider;
 use Elegon\Foundation\Console\PublishConfigs;
+use Elegon\Foundation\Console\InitializeFramework;
 
 class FoundationServiceProvider extends ServiceProvider
 {
@@ -18,7 +19,11 @@ class FoundationServiceProvider extends ServiceProvider
 
         $this->publishConfigs();
 
-        $this->commandsInConsole([ PublishConfigs::class ]);
+        // Initializes commands.
+        $this->commandsInConsole([ 
+            PublishConfigs::class, 
+            InitializeFramework::class 
+        ]);
     }
 
     public function register()
