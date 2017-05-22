@@ -1,0 +1,90 @@
+
+#landing {
+
+    /* Pusher container */
+    .pusher {
+        padding-top: 4em;
+    }
+
+    /* Menu buttons */
+    .main.menu .ui.button,
+    .hero.menu .ui.button {
+        margin-left: 0.5em;
+    }
+
+    /* Main menu */
+    .main.menu {
+        background-color: white;
+
+        .ui.inverted.button {
+            color: @black;
+            box-shadow: inset 0px 0px 0px 2px @black !important;
+
+            &:hover {
+                color: white;
+                background-color: @black;
+                box-shadow: inset 0px 0px 0px 2px @black !important;
+            }
+        }
+    }
+
+    /* Hero */
+    .hero.segment {
+        height: 100vh;
+        padding: 1em 0em;
+
+        h1 {
+            margin-top: 3em;
+            margin-bottom: 0em;
+            font-size: 4em;
+            font-weight: normal;
+
+            @media only screen and (max-width: @largestMobileScreen) {
+                font-size: 2em;
+                margin-top: 1.5em;
+            }
+        }
+
+        h2 {
+            font-size: 1.7em;
+            font-weight: normal;
+
+            @media only screen and (max-width: @largestMobileScreen) {
+                margin-top: 0.5em;
+                font-size: 1.5em;
+            }
+        }
+    }
+
+    /* Stripe segments */
+    .ui.stripe.segment {
+        padding: 8em 0em;
+
+        h3 { font-size: 2em; }
+        p { font-size: 1.33em; }
+        .button + h3, p + h3 { margin-top: 3em; }
+        .floated.image { clear: both; }
+        .horizontal.divider { margin: 3em 0em; }
+    }
+
+    /* Quote segments */
+    .ui.quote.segment { // TODO remove .ui
+        padding: 0em;
+
+        .grid .column {
+            padding-top: 5em;
+            padding-bottom: 5em;
+        }
+    }
+
+    /* Footer */
+    .footer.segment {
+      padding: 5em 0em;
+    }
+
+    /* Home page */
+    &.home {
+        .pusher { padding-top: 0px; }
+        .main.menu { display: none; }
+    }
+}

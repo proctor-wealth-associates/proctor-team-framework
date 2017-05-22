@@ -1,0 +1,31 @@
+
+@profilePictureSize: 150px;
+@profilePictureBackgroundColor: white;
+@profilePictureBorder: 1px solid #D4D4D5;
+
+.user.card {
+    position: relative;
+    padding-top: @profilePictureSize / 2;
+    margin-top: @profilePictureSize / 2 !important;
+
+    .header, .meta {
+        text-align: center;
+    }
+
+    > .profile-picture {
+        position: absolute;
+        top: -(@profilePictureSize / 2);
+        left: 0;
+        width: 100%;
+        height: @profilePictureSize;
+        text-align: center;
+
+        .image {
+            display: inline-block;
+            width: @profilePictureSize;
+            height: @profilePictureSize;
+            background-color: @profilePictureBackgroundColor;
+            border: @profilePictureBorder;
+        }
+    }
+}

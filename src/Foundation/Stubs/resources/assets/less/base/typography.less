@@ -1,0 +1,45 @@
+
+/*-------------------
+       Fonts
+--------------------*/
+
+@fontName          : 'Lato';
+@fontSmoothing     : antialiased;
+
+@headerFont        : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont          : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+@googleFontName    : @fontName;
+@importGoogleFonts : true;
+@googleFontSizes   : '400,700,400italic,700italic';
+@googleSubset      : 'latin';
+
+@googleProtocol    : 'https://';
+@googleFontRequest : '@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}';
+
+/*-------------------
+      Paragraph
+--------------------*/
+
+@textColor           : rgba(0, 0, 0, 0.87);
+@paragraphMargin     : 0em 0em 1em;
+@paragraphLineHeight : @lineHeight;
+
+/*-------------------
+       Links
+--------------------*/
+
+@linkColor           : #4183C4;
+@linkUnderline       : none;
+@linkHoverColor      : darken(saturate(@linkColor, 20), 15, relative);
+@linkHoverUnderline  : @linkUnderline;
+
+/*-------------------
+  Highlighted Text
+--------------------*/
+
+@highlightBackground      : #CCE2FF;
+@highlightColor           : @textColor;
+
+@inputHighlightBackground : rgba(100, 100, 100, 0.4);
+@inputHighlightColor      : @textColor;
