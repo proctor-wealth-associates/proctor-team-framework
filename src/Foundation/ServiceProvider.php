@@ -12,7 +12,7 @@ class ServiceProvider extends IlluminateServiceProvider
     protected function publishConfigs()
     {
         $configPaths = collect($this->configs)->mapWithKeys(function($config) {
-            return [ "{$this->getDir()}/Config/$config.php" => config_path("elegon/$config.php") ];
+            return [ $this->getDir("/Config/$config.php") => config_path("elegon/$config.php") ];
         })->toArray();
 
         $this->publishes($configPaths, 'elegon_config');
@@ -21,15 +21,15 @@ class ServiceProvider extends IlluminateServiceProvider
     protected function mergeConfigs()
     {
         collect($this->configs)->each(function($config) {
-            $this->mergeConfigFrom("{$this->getDir()}/Config/$config.php", "elegon.$config");
+            $this->mergeConfigFrom($this->getDir("/Config/$config.php"), "elegon.$config");
         });
     }
 
-    protected function getDir()
+    protected function getDir($path = '')
     {
         $classInstanciated = new ReflectionClass(static::class);
 
-        return dirname($classInstanciated->getFileName());
+        return dirname($classInstanciated->getFileName()) . $path;
     }
 
     protected function commandsInConsole($commands)
