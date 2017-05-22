@@ -27,6 +27,8 @@ class InitializeFramework extends Command
         $this->detail('call: php artisan storage:link');
         $this->callSilent('storage:link');
         $this->replace('config/filesystems.php');
+        $this->edit('config/app.php', [ "#'APP_NAME', 'Laravel'#" => "'APP_NAME', 'Elegon'" ]);
+        $this->edit('.env', [ "#APP_NAME=Laravel#" => "APP_NAME=Elegon" ]);
     }
 
     protected function scaffoldRoutesAndControllers()
