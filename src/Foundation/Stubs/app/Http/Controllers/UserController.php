@@ -48,7 +48,7 @@ class UserController extends Controller
             $user->password = bcrypt($request->password);
         }
 
-        $user->update($request->all());
+        $user->update($request->all('name'));
 
         session()->flash('success', 'Profile updated.');
         return redirect()->back();
