@@ -24,6 +24,8 @@ class InviteController extends Controller
      */
     public function store(Request $request, Team $team)
     {
+        $this->validate($request, [ 'email' => 'required|email' ]);
+
         if ($team->hasPendingInvite($request->email)) {
             return redirect()->back()->withErrors([
                 'email' => 'The email address is already invited to the team.'
@@ -71,9 +73,7 @@ class InviteController extends Controller
         }
 
         $invite->accept();
-
         flash()->success("You have joined {$invite->team->name}.");
-
         return redirect()->route('team.show', $invite->team);
     }
 
