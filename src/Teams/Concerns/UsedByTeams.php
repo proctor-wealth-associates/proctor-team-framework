@@ -2,8 +2,8 @@
 
 namespace Elegon\Teams\Traits;
 
+use Elegon;
 use Exception;
-use Elegon\Foundation\Elegon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 

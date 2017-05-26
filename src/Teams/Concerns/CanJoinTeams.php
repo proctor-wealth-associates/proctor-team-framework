@@ -2,7 +2,7 @@
 
 namespace Elegon\Teams\Concerns;
 
-use Elegon\Foundation\Elegon;
+use Elegon;
 use Elegon\Teams\Events\UserLeftTeam;
 use Elegon\Teams\Events\UserJoinedTeam;
 use Illuminate\Database\Eloquent\Model;

@@ -3,7 +3,7 @@
 namespace Elegon\Teams;
 
 use Route;
-use Elegon\Foundation\Elegon;
+use Elegon;
 use Elegon\Foundation\ServiceProvider;
 
 class TeamsServiceProvider extends ServiceProvider

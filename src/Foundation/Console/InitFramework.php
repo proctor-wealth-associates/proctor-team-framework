@@ -2,7 +2,7 @@
 
 namespace Elegon\Foundation\Console;
 
-use Elegon\Foundation\Elegon;
+use Elegon;
 use Illuminate\Console\Command;
 
 class InitFramework extends Command

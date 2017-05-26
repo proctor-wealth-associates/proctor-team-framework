@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Elegon\Foundation\Elegon;
+use Elegon;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
