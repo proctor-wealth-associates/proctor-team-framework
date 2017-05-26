@@ -39,18 +39,9 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if (session('invite_token')) {
-            $invite = Elegon::invite()->findByToken(session('invite_token'));
-
-            if ($invite && $invite->isFor($user)) {
-                flash()->success("You have joined {$invite->team->name}.");
-                $invite->accept();
-                return redirect()->route('team.show', $invite->team);
-            }
-
-            session()->forget('invite_token');
-
-            //
+        if ($teamId = session('joined_team')) {
+            session()->forget('joined_team');
+            return redirect()->route('team.show', $teamId);
         }
 
         //

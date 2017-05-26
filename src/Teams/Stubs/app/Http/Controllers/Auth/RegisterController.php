@@ -65,16 +65,9 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        if (session('invite_token')) {
-            $invite = Elegon::invite()->findByToken(session('invite_token'));
-
-            if ($invite && $invite->isFor($user)) {
-                $invite->accept();
-                flash()->success("You have joined {$invite->team->name}.");
-                return redirect()->route('team.show', $invite->team);
-            }
-
-            session()->forget('invite_token');
+        if ($teamId = session('joined_team')) {
+            session()->forget('joined_team');
+            return redirect()->route('team.show', $teamId);
         }
 
         //

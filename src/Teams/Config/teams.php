@@ -9,4 +9,6 @@ return [
     'team_user_table' => 'team_user',
     'user_foreign_key' => 'id',
 
+    'join_team_listener' => Elegon\Teams\Listeners\JoinTeamListener::class,
+
 ];
