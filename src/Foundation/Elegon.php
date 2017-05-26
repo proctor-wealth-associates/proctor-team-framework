@@ -2,11 +2,27 @@
 
 namespace Elegon\Foundation;
 
+use Elegon\Teams\Concerns\CanJoinTeams;
+
 class Elegon
 {
-    public static $userModel = null;
+    const PACKAGES = [
+        'Foundation',
+        'Impersonation',
+        'Teams',
+    ];
 
-    public static $teamModel = null;
+    public static $userModel;
+
+    public static $teamModel;
+
+    public static $inviteModel;
+
+    public static $routePrefix = '';
+
+    public static $disabledPackageRoutes = [];
+
+    // Users and teams
 
     public static function useUserModel($userModel)
     {
@@ -30,7 +46,7 @@ class Elegon
 
     public static function usesTeams()
     {
-        // return in_array(CanJoinTeams::class, class_uses_recursive(static::userModel()));
+        return in_array(CanJoinTeams::class, class_uses_recursive(static::userModel()));
     }
 
     public static function teamModel()
@@ -43,6 +59,23 @@ class Elegon
         return new static::$teamModel;
     }
 
+    public static function useInviteModel($inviteModel)
+    {
+        static::$inviteModel = $inviteModel;
+    }
+
+    public static function inviteModel()
+    {
+        return static::$inviteModel;
+    }
+
+    public static function invite()
+    {
+        return new static::$inviteModel;
+    }
+
+    // Packages
+
     public static function hasPackage($elegonServiceProvider, $elegonPackage = null)
     {
         $elegonPackage = $elegonPackage ?: $elegonServiceProvider;
@@ -54,5 +87,27 @@ class Elegon
     public static function hasServiceProvider($class)
     {
         return in_array($class, config('app.providers'));
+    }
+
+    // Routes
+    
+    public static function setRoutePrefix($prefix)
+    {
+        static::$routePrefix = $prefix;
+    }
+    
+    public static function routePrefix()
+    {
+        return static::$routePrefix;
+    }
+
+    public static function disableRoutesFor($packageName)
+    {
+        static::$disabledPackageRoutes[] = $packageName;
+    }
+
+    public static function routesDisabledFor($packageName)
+    {
+        return in_array($packageName, static::$disabledPackageRoutes);
     }
 }

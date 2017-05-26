@@ -2,11 +2,13 @@
 
 namespace Elegon\Foundation\Console;
 
-class InitializeFramework extends Command
-{
-    protected $signature = 'elegon:init';
+use Elegon\Foundation\Console\ManipulatesApplication;
 
-    protected $description = 'Initializes and scaffolds elegon\'s framework';
+class InitPackage
+{
+    use ManipulatesApplication;
+
+    public $description = 'for the scaffolding you keep doing over and over.';
 
     public function handle()
     {
@@ -21,9 +23,8 @@ class InitializeFramework extends Command
 
     protected function initConfigurations()
     {
-        $this->info('Initializes configurations');
-        $this->detail('call: php artisan elegon:config');
-        $this->callSilent('elegon:config');
+        $this->title('Initializes configurations');
+        $this->publish('Foundation', 'config');
         $this->detail('call: php artisan storage:link');
         $this->callSilent('storage:link');
         $this->replace('config/filesystems.php');
@@ -33,14 +34,14 @@ class InitializeFramework extends Command
 
     protected function scaffoldRoutesAndControllers()
     {
-        $this->info('Scaffolds routes and controllers');
+        $this->title('Scaffolds routes and controllers');
         $this->replace('routes/web.php');
         $this->replace('app/Http/Controllers');
     }
 
     protected function scaffoldUserModel()
     {
-        $this->info('Scaffolds user model');
+        $this->title('Scaffolds user model');
         $this->replace('app/User.php');
         $this->replace('database/migrations');
         $this->add('app/Jobs');
@@ -53,10 +54,10 @@ class InitializeFramework extends Command
 
     protected function scaffoldResources()
     {
-        $this->info('Scaffolds views');
+        $this->title('Scaffolds views');
         $this->replace('resources/views');
 
-        $this->info('Scaffolds assets');
+        $this->title('Scaffolds assets');
         $this->replace('resources/assets/js');
         $this->replace('resources/assets/less');
         $this->delete('resources/assets/sass');
@@ -65,7 +66,7 @@ class InitializeFramework extends Command
 
     protected function scaffoldPublicFolder()
     {
-        $this->info('Scaffolds public folder');
+        $this->title('Scaffolds public folder');
         $this->replace('public/js');
         $this->replace('public/css');
         $this->add('public/images');
@@ -74,13 +75,13 @@ class InitializeFramework extends Command
 
     protected function composerDependencies()
     {
-        $this->info('Add composer dependencies');
+        $this->title('Add composer dependencies');
         $this->exec('composer require intervention/image ^2.3');
     }
 
     protected function npmDependencies()
     {
-        $this->info('Add npm dependencies');
+        $this->title('Add npm dependencies');
         $this->exec('npm remove bootstrap-sass --save-dev');
         $this->edit('package.json', [
             '#("scripts": {\n)#' 

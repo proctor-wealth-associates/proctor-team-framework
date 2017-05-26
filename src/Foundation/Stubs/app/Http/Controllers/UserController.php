@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-        $this->middleware('can:manage,user')->except('show');
+        $this->authorizePolicy(User::class);
     }
 
     /**
@@ -49,8 +49,8 @@ class UserController extends Controller
         }
 
         $user->update($request->all('name'));
+        flash()->success('Profile updated.');
 
-        session()->flash('success', 'Profile updated.');
         return redirect()->back();
     }
 

@@ -14,44 +14,25 @@
         <a class="item" href="{{ route('dashboard') }}">
             <i class="space shuttle icon"></i> {{ config('app.name', 'Elegon') }}
         </a>
+
         <a class="item">
             <i class="grid layout icon"></i> Browse
         </a>
 
         {{-- Right side of the menu --}}
         <div class="right menu">
+
             @if (Auth::guest())
+
+                {{-- Guest --}}
                 <a class="item" href="{{ route('login') }}">Login</a>
                 <a class="item" href="{{ route('register') }}">Register</a>
+
             @else
-                <div class="ui simple dropdown item">
-                    <img class="ui avatar image" src="{{ Auth::user()->photo_url }}">
-                    {{ Auth::user()->name }}
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item" href="{{ route('user.show', Auth::user()) }}">
-                            <i class="user outline icon"></i> See Profile
-                        </a>
-                        <a class="item" href="{{ route('user.edit', Auth::user()) }}">
-                            <i class="edit icon"></i> Edit Profile
-                        </a>
-                        <div class="divider"></div>
-                        <a  class="item" 
-                            href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                        >
-                            <i class="sign out icon"></i> Logout
-                            <form 
-                                id="logout-form" 
-                                action="{{ route('logout') }}" 
-                                method="POST" 
-                                style="display: none;"
-                            >
-                                {{ csrf_field() }}
-                            </form>
-                        </a>
-                    </div>
-                </div>
+
+                {{-- Authenticated --}}
+                @include('layouts.app.header.user')
+                
             @endif
         </div>
     </div>

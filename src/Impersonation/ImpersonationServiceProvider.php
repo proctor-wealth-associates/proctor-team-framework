@@ -11,7 +11,7 @@ class ImpersonationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishConfigs();
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadRoutes();
     }
 
     public function register()

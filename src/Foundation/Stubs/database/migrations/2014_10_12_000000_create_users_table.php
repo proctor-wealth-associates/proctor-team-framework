@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create(Elegon::user()->getTable(), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -38,7 +38,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('password_resets');
-        Schema::dropIfExists('users');
+        Schema::dropIfExists(Elegon::user()->getTable());
 
     }
 }

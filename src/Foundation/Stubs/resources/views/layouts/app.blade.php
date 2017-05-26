@@ -25,6 +25,7 @@
 <body class="{{ isset($bodyClass) ? $bodyClass : '' }}">
     <div id="app">
         @include('layouts.app.header')
+        @include('flash::container')
 
         @yield('content')
     </div>

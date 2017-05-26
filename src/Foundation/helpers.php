@@ -72,4 +72,20 @@ if (! function_exists('delete_folder')) {
     }
 }
 
+if (! function_exists('flash')) {
+    /**
+     * Flash a notification message to the session.
+     */
+    function flash($message = null, $level = '')
+    {
+        $notifier = app('flash');
+
+        if (! is_null($message)) {
+            return $notifier->message($message, $level);
+        }
+
+        return $notifier;
+    }
+}
+
 ?>

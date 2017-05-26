@@ -22,6 +22,6 @@ class UserPolicy
      */
     public function manage(User $user, User $userProfile)
     {
-        return $user->getKey() === $userProfile->getKey();
+        return $user->is($userProfile);
     }
 }
