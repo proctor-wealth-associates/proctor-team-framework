@@ -52,22 +52,24 @@ class Invite extends Model
      */
     public function isFor($user)
     {
-        return $user->email === $this->email;
+        return $user && $user->email === $this->email;
     }
 
     /**
      * Accept the invitation by adding the user to the team.
      */
-    public function accept()
+    public function accept($user = null)
     {
-        if (Auth::guest() || ! $this->isFor(Auth::user())) {
+        $user = $user ?: Auth::user();
+        
+        if (! $this->isFor($user)) {
             throw new \Exception('The authenticated user\'s email does not match the invite email.');
         }
 
-        Auth::user()->attachTeam($this->team);
-        Auth::user()->switchTeam($this->team);
+        $user->attachTeam($this->team);
+        $user->switchTeam($this->team);
 
-        event(new UserJoinedTeam(Auth::user(), $this->team));
+        event(new UserJoinedTeam($user, $this->team));
 
         $this->delete();
     }
