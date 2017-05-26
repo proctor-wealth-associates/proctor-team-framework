@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Elegon;
 use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -80,5 +81,29 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        if (session('invite_token')) {
+            $invite = Elegon::invite()->findByToken(session('invite_token'));
+
+            if ($invite && $invite->isFor($user)) {
+                $invite->accept();
+                flash()->success("You have joined {$invite->team->name}.");
+                return redirect()->route('team.show', $invite->team);
+            }
+
+            session()->forget('invite_token');
+        }
+
+        //
     }
 }

@@ -70,6 +70,8 @@ class LoginController extends Controller
             }
 
             session()->forget('invite_token');
+
+            //
         }
     }
 }
