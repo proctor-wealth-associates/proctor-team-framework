@@ -9,6 +9,7 @@ use App\Team;
 use App\Mail\TeamInvite;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Elegon\Teams\Events\UserInvitedToTeam;
 
 class InviteController extends Controller
 {
@@ -41,6 +42,7 @@ class InviteController extends Controller
         }
 
         Mail::send(new TeamInvite($invite));
+        event(new UserInvitedToTeam($invite));
         
         return redirect()->back();
     }

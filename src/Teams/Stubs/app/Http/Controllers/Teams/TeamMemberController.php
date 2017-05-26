@@ -6,6 +6,7 @@ use Auth;
 use App\Team;
 use App\User;
 use App\Http\Controllers\Controller;
+use Elegon\Teams\Events\UserLeftTeam;
 
 class TeamMemberController extends Controller
 {
@@ -21,6 +22,8 @@ class TeamMemberController extends Controller
     public function destroy(Team $team, User $user)
     {
         $user->detachTeam($team);
+
+        event(new UserLeftTeam($user, $team));
 
         if (Auth::user()->is($user)) {
             flash()->success("You have left {$team->name}.");

@@ -4,6 +4,7 @@ namespace Elegon\Teams;
 
 use Auth;
 use Elegon;
+use Elegon\Teams\Events\UserJoinedTeam;
 use Illuminate\Database\Eloquent\Model;
 
 class Invite extends Model
@@ -65,7 +66,9 @@ class Invite extends Model
 
         Auth::user()->attachTeam($this->team);
         Auth::user()->switchTeam($this->team);
-        
+
+        event(new UserJoinedTeam(Auth::user(), $this->team));
+
         $this->delete();
     }
 
