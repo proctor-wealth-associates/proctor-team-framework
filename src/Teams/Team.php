@@ -46,6 +46,22 @@ class Team extends Model
     }
 
     /**
+     * Check if the authenticated user has this team as a current team.
+     */
+    public function isCurrent()
+    {
+        return $this->isCurrentFor(Auth::user());
+    }
+
+    /**
+     * Check if the given user has this team as a current team.
+     */
+    public function isCurrentFor(Model $user)
+    {
+        return $user->isCurrentTeam($this);
+    }
+
+    /**
      * Check whether an invite has already been sent to the given email address.
      */
     public function hasPendingInvite($email)
