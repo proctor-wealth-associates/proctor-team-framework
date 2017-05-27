@@ -1,7 +1,8 @@
 <?php
 
-namespace Elegon\Teams\Traits;
+namespace Elegon\Teams\Concerns;
 
+use Auth;
 use Elegon;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
