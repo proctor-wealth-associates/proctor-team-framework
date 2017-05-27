@@ -31,5 +31,9 @@
         "psr-4": {
             "Elegon\\Tests\\": "tests/"
         }
+    },
+    "dist": {
+        "type": "git",
+        "url": "git@bitbucket.org:elegondigital/framework.git"
     }
 }
