@@ -1,7 +1,6 @@
 {
     "name": "elegondigital/framework",
     "description": "Set of packages to facilitate new projects at Elegon",
-    "version": "master",
     "authors": [
         {
             "name": "Loris Leiva",
