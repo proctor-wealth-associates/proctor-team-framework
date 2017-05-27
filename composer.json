@@ -33,8 +33,9 @@
             "Elegon\\Tests\\": "tests/"
         }
     },
-    "dist": {
+    "source": {
         "type": "git",
-        "url": "git@bitbucket.org:elegondigital/framework.git"
+        "url": "git@bitbucket.org:elegondigital/framework.git",
+        "reference": "origin/master"
     }
 }
