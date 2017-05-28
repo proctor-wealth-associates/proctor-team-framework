@@ -62,7 +62,7 @@ trait AuthorizesRequests
     protected function getFirstAvailableAbility($abilities, $policy)
     {
         foreach (explode('|', $abilities) as $ability) {
-            if (method_exists($policy, $ability)) {
+            if (method_exists($policy, camel_case($ability))) {
                 return $ability;
             }
         }
