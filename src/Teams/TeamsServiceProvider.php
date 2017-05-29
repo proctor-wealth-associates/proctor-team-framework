@@ -17,7 +17,6 @@ class TeamsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishConfigs();
-        $this->loadMigrations();
 
         // Route model binding.
         Route::model('team', Elegon::teamModel());

@@ -48,6 +48,7 @@ class InitPackage
     protected function scaffoldModels()
     {
         $this->title('Scaffolds models');
+        $this->add('database/migrations');
         $this->add('app/Team.php');
         $this->edit('app/User.php', [
             "#(namespace App;\n)#" => "\\1\nuse Elegon\\Teams\\Concerns\\CanJoinTeams;",
