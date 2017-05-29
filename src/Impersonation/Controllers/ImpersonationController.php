@@ -18,16 +18,16 @@ class ImpersonationController extends Controller
     public function impersonate(Request $request, $userId)
     {
         $request->session()->flush();
-        $request->session()->put('elegon:impersonator', $request->user()->id);
+        $request->session()->put('elegon:impersonator', $request->user()->getKey());
 
         Auth::login(Elegon::user()->findOrFail($userId));
 
-        return redirect('/settings');
+        return redirect(config('elegon.impersonation.redirect_begins'));
     }
 
     public function stopImpersonating(Request $request)
     {
-        $currentId = Auth::id();
+        $currentId = Auth::user()->getKey();
 
         if (! $request->session()->has('elegon:impersonator')) {
             Auth::logout();
@@ -40,7 +40,10 @@ class ImpersonationController extends Controller
 
         Auth::login(Elegon::user()->findOrFail($userId));
 
-        return redirect('/spark/kiosk#/users/'.$currentId);
+        $redirectUrl = config('elegon.impersonation.redirect_finished');
+        $redirectUrl = preg_replace('#{user}#', $currentId, $redirectUrl);
+
+        return redirect($redirectUrl);
     }
 
     private function authorizeImpersonation()

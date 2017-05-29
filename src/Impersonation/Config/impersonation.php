@@ -14,7 +14,7 @@ return [
      * These define where to redirect the user when impersonation 
      * begins and finishes.
      */
-    'redirect_begins' => '/settigs',
+    'redirect_begins' => '/home',
     'redirect_finished' => '/user/{user}',
     
 ];
