@@ -27,7 +27,7 @@ class InitFramework extends Command
     protected function initAllUsedPackages()
     {
         foreach (Elegon::PACKAGES as $packageName) {
-            if (Elegon::hasPackage($packageName)) {
+            if (Elegon::hasPackage($packageName)  && $this->hasPackageHandler($packageName)) {
                 $this->initPackage($packageName);
             }
         }
@@ -35,17 +35,22 @@ class InitFramework extends Command
 
     protected function initPackage($packageName)
     {
-        $initHandlerClass = "Elegon\\$packageName\Console\InitPackage";
-
-        if (! class_exists($initHandlerClass)) {
-            $this->error("$packageName: Package initiator not found.");
-            return;
+        if (! $this->hasPackageHandler($packageName)) {
+            return $this->error("$packageName: Package initiator not found.");
         }
 
+        $initHandlerClass = "Elegon\\$packageName\Console\InitPackage";
         $initHandler = new $initHandlerClass($this);
         $description = $initHandler->description;
 
         $this->info("$packageName: $description");
         $initHandler->handle();
+    }
+
+    protected function hasPackageHandler($packageName)
+    {
+        $packageHandlerClass = "Elegon\\$packageName\Console\InitPackage";
+
+        return class_exists($packageHandlerClass);
     }
 }
