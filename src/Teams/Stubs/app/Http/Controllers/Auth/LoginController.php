@@ -29,7 +29,9 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        $invite = Elegon::invite()->findByToken(session('invite_token'));
+        $invite = session('invite_token') 
+            ? Elegon::invite()->findByToken(session('invite_token')) 
+            : null;
 
         return view('pages.auth.login', compact('invite'));
     }

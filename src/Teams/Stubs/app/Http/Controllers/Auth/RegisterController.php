@@ -31,7 +31,9 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $invite = Elegon::invite()->findByToken(session('invite_token'));
+        $invite = session('invite_token') 
+            ? Elegon::invite()->findByToken(session('invite_token')) 
+            : null;
 
         return view('pages.auth.register', compact('invite'));
     }
