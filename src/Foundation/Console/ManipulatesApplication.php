@@ -38,7 +38,7 @@ trait ManipulatesApplication
     {
         if (! $silent) $this->detail("add: $path");
 
-        copy_folder($this->getDir("/../Stubs/$path"), base_path($path));
+        copy_folder($this->getDir("../Stubs/$path"), base_path($path));
     }
 
     protected function delete($path, $silent = false)
@@ -71,7 +71,7 @@ trait ManipulatesApplication
 
         file_put_contents(
             base_path($path),
-            file_get_contents($this->getDir("/../Stubs/$path")),
+            file_get_contents($this->getDir("../Stubs/$path")),
             FILE_APPEND
         );
     }
