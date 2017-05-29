@@ -16,7 +16,7 @@ class Publish extends Command
         if ($this->noOptions()) {
             return $this->publishAllPackages();
         }
-
+        
         $this->call('vendor:publish', $this->getPublishOptions());
     }
 
@@ -43,11 +43,11 @@ class Publish extends Command
         $tag = $this->option('tag');
 
         if ($packageName) {
-            $options[ '--provider'] = $this->getProviderOfPackage($packageName);
+            $options['--provider'] = $this->getProviderOfPackage($packageName);
         }
 
         if ($tag) {
-            $options[ '--tag'] = "elegon_$packageName";
+            $options['--tag'] = "elegon_$tag";
         }
 
         return $options;
