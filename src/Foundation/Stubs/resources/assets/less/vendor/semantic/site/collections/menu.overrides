@@ -1,0 +1,23 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+// Give space to content after the fixed header.
+.ui.fixed.menu + .ui.grid:not([class*="middle aligned"]) {
+    padding-top: @minHeight + 2rem;
+}
+
+// Make right menu items also stackable.
+.ui.stackable.menu .left.menu, 
+.ui.stackable.menu .right.menu {
+    @media only screen and (max-width: @largestMobileScreen) {
+        flex-direction: column;
+    }
+}
+
+// Give a right border to the last right menu item.
+.ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) .right.menu {
+    @media only screen and (min-width: 768px) {
+        border-right: @dividerSize solid @dividerBackground;
+    }
+}

@@ -1,0 +1,6 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+// Overrides all global variables with the app's base folder
+@import "../../../../base/_all";

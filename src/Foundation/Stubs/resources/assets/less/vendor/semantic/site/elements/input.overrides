@@ -1,0 +1,19 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+/* Input helpers */
+.field.success, .field.info,
+.field.warning, .field.error {
+    text-align: left;
+}
+
+.field.success small.helper { color: @positiveTextColor; }
+.field.info small.helper    { color: @infoTextColor; }
+.field.warning small.helper { color: @warningTextColor; }
+.field.error small.helper   { color: @negativeTextColor; }
+
+/* File input */
+.ui.file.input input[type="file"] {
+    display: none;
+}

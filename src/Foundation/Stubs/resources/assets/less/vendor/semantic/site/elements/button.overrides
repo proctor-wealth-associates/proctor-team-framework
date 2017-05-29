@@ -1,0 +1,19 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+// Make icon button in headers independant of the header typography.
+.ui.header .ui.icon.buttons .button,
+.ui.header .ui.icon.button {
+    padding: @verticalPadding @verticalPadding ( @verticalPadding + @shadowOffset );
+    font-size: @medium !important;
+    
+    &.mini { font-size: @mini !important; }
+    &.tiny { font-size: @tiny !important; }
+    &.small { font-size: @small !important; }
+    &.large { font-size: @large !important; }
+    &.big { font-size: @big !important; }
+    &.huge { font-size: @huge !important; }
+    &.massive { font-size: @massive !important; }
+    &.compact { padding: @compactVerticalPadding @compactVerticalPadding ( @compactVerticalPadding + @shadowOffset ); }
+}
