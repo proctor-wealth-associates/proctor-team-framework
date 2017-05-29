@@ -70,7 +70,7 @@ class TeamController extends Controller
     public function update(Request $request, Team $team)
     {
         $this->validate($request, [
-            'name' => 'filled|max:255',
+            'name' => 'filled|max:191',
             'avatar' => 'filled|image|max:4000',
         ]);
 

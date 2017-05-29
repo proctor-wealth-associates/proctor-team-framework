@@ -35,7 +35,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $this->validate($request, [
-            'name' => 'filled|max:255',
+            'name' => 'filled|max:191',
             'avatar' => 'filled|image|max:4000',
             'password' => 'filled|min:6|confirmed',
         ]);
