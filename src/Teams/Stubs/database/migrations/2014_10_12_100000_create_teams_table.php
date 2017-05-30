@@ -26,7 +26,7 @@ class CreateTeamsTable extends Migration
             $table->timestamps();
 
             $table->foreign('owner_id')
-                ->references(config('elegon.teams.user_foreign_key'))
+                ->references('id')
                 ->on(Elegon::user()->getTable());
         });
 
@@ -39,7 +39,7 @@ class CreateTeamsTable extends Migration
             $table->primary([ 'user_id', 'team_id' ]);
 
             $table->foreign('user_id')
-                ->references(config('elegon.teams.user_foreign_key'))
+                ->references('id')
                 ->on(Elegon::user()->getTable())
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
@@ -58,6 +58,10 @@ class CreateTeamsTable extends Migration
             $table->string('email');
             $table->string('token');
             $table->timestamps();
+                
+            $table->foreign('user_id')
+                ->references('id')
+                ->on(Elegon::user()->getTable());
 
             $table->foreign('team_id')
                 ->references('id')

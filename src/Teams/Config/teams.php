@@ -17,7 +17,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Tables and fields
+    | Tables
     |--------------------------------------------------------------------------
     |
     | Here, you can customize the names of the pivot tables to use. 
@@ -27,7 +27,6 @@ return [
    
     'invite_table' => 'team_invites',
     'team_user_table' => 'team_user',
-    'user_foreign_key' => 'id',
 
     /*
     |--------------------------------------------------------------------------
