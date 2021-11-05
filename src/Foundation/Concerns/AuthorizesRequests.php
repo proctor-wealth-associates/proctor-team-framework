@@ -4,6 +4,7 @@ namespace Elegon\Foundation\Concerns;
 
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests as BaseAuthorizesRequests;
+use Illuminate\Support\Str;
 
 trait AuthorizesRequests
 {
@@ -62,7 +63,7 @@ trait AuthorizesRequests
     protected function getFirstAvailableAbility($abilities, $policy)
     {
         foreach (explode('|', $abilities) as $ability) {
-            if (method_exists($policy, camel_case($ability))) {
+            if (method_exists($policy, Str::camel($ability))) {
                 return $ability;
             }
         }
