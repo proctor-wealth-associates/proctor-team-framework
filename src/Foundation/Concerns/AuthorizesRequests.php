@@ -57,7 +57,7 @@ trait AuthorizesRequests
      * Return the first available ability in the given model's policy.
      *
      * @param string $abilities A pipe delimited list of abilities. 
-     * @param Policy $policy The policy associated with the model.
+     * @param object $policy The policy class associated with the model.
      * @return string|null The ability or null of none was found.
      */
     protected function getFirstAvailableAbility($abilities, $policy)

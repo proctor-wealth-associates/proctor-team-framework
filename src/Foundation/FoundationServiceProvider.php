@@ -2,7 +2,7 @@
 
 namespace Elegon\Foundation;
 
-use Schema;
+use Illuminate\Support\Facades\Schema;
 use Elegon\Foundation\Elegon;
 use Elegon\Foundation\Console\Publish;
 use Elegon\Foundation\ServiceProvider;
