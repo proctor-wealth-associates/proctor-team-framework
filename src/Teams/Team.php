@@ -3,7 +3,7 @@
 namespace Elegon\Teams;
 
 use Auth;
-use Elegon;
+use Elegon\Foundation\Elegon;
 use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model

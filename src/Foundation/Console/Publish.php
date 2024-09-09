@@ -2,7 +2,7 @@
 
 namespace Elegon\Foundation\Console;
 
-use Elegon;
+use Elegon\Foundation\Elegon;
 use Illuminate\Console\Command;
 
 class Publish extends Command
