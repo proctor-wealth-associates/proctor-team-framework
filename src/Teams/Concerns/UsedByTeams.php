@@ -2,11 +2,11 @@
 
 namespace Elegon\Teams\Concerns;
 
-use Auth;
-use Elegon;
+use Elegon\Foundation\Elegon;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 trait UsedByTeams
 {

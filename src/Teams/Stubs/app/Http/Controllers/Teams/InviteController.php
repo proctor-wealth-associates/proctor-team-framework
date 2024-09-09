@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Teams;
 
-use Auth;
-use Mail;
-use Elegon;
 use App\Team;
 use App\Mail\TeamInvite;
+use Elegon\Foundation\Elegon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Elegon\Teams\Events\UserInvitedToTeam;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class InviteController extends Controller
 {

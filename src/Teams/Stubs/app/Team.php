@@ -6,11 +6,6 @@ use Elegon\Teams\Team as ElegonTeam;
 
 class Team extends ElegonTeam
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [ 'name', 'owner_id' ];
 
     /**

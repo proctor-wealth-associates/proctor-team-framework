@@ -2,7 +2,7 @@
 
 namespace Elegon\Foundation\Console;
 
-use Elegon;
+use Elegon\Foundation\Elegon;
 use Illuminate\Console\Command;
 
 class InitFramework extends Command
@@ -36,7 +36,7 @@ class InitFramework extends Command
     protected function initPackage($packageName)
     {
         if (! $this->hasPackageHandler($packageName)) {
-            return $this->error("$packageName: Package initiator not found.");
+            $this->error("$packageName: Package initiator not found.");
         }
 
         $initHandlerClass = "Elegon\\$packageName\Console\InitPackage";

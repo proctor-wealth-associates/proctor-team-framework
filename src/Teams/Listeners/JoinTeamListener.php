@@ -2,7 +2,7 @@
 
 namespace Elegon\Teams\Listeners;
 
-use Elegon;
+use Elegon\Foundation\Elegon;
 
 class JoinTeamListener
 {

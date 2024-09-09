@@ -32,6 +32,7 @@ class ImpersonationController extends Controller
         if (! $request->session()->has('elegon:impersonator')) {
             Auth::logout();
 
+            // @phpstan-ignore argument.type
             return redirect(config());
         }
 

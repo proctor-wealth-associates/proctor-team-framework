@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
 class StoreAvatar
@@ -38,6 +38,7 @@ class StoreAvatar
 
     protected function formattedImage()
     {
+        // @phpstan-ignore class.notFound
         $imageManager = app(ImageManager::class);
         $imagePath = $this->image->path();
 

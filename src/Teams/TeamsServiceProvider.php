@@ -2,9 +2,9 @@
 
 namespace Elegon\Teams;
 
-use Event;
-use Route;
-use Elegon;
+use Elegon\Foundation\Elegon;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Events\Login;
 use Elegon\Foundation\ServiceProvider;
 use Illuminate\Auth\Events\Registered;
