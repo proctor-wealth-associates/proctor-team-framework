@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
 class StoreAvatar
