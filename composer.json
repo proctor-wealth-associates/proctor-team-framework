@@ -34,8 +34,7 @@
         "reference": "origin/master"
     },
     "require-dev": {
-        "larastan/larastan": "^2.9",
-        "orchestra/testbench": "^9.0"
+        "larastan/larastan": "^2.9"
     },
     "scripts": {
         "lint": "./vendor/bin/phpstan analyze"
