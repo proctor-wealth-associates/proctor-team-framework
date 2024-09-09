@@ -7,7 +7,7 @@ use Elegon\Foundation\Elegon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Elegon\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {

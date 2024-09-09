@@ -4,6 +4,7 @@ namespace Elegon\Teams;
 
 use Auth;
 use Elegon\Foundation\Elegon;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
@@ -50,6 +51,7 @@ class Team extends Model
      */
     public function isCurrent()
     {
+        // @phpstan-ignore argument.type
         return $this->isCurrentFor(Auth::user());
     }
 

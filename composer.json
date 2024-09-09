@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": "^8.2|^8.3",
-        "illuminate/support": "^10.0"
+        "illuminate/support": "^11.0"
     },
     "autoload": {
         "psr-4": {
@@ -35,7 +35,7 @@
     },
     "require-dev": {
         "larastan/larastan": "^2.9",
-        "orchestra/testbench": "^8.0"
+        "orchestra/testbench": "^9.0"
     },
     "scripts": {
         "lint": "./vendor/bin/phpstan analyze"

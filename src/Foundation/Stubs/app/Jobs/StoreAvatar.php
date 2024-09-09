@@ -38,6 +38,7 @@ class StoreAvatar
 
     protected function formattedImage()
     {
+        // @phpstan-ignore class.notFound
         $imageManager = app(ImageManager::class);
         $imagePath = $this->image->path();
 
